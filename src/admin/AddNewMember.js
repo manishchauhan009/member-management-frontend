@@ -1,6 +1,5 @@
   import React, { useState, useEffect } from "react";
   import axios from "axios";
-  import API_URL from "../Url";
 
   export const AddNewMember = () => {
     const [memberData, setMemberData] = useState({
@@ -27,6 +26,7 @@
     const [cities, setCities] = useState([]);
 
     const fetchCountries = () => {
+      const API_URL = process.env.REACT_APP_API_URL;
       axios
         .get(`${API_URL}/api/locations/countries`)
         .then((response) => setCountries(response.data))
@@ -34,9 +34,9 @@
     };
 
     useEffect(() => {
+      const API_URL = process.env.REACT_APP_API_URL;
       if (memberData.country) {
         // Correct URL with country ID as a parameter
-        console.log("Member Data Country ", memberData.country)
         axios.get(`${API_URL}/api/locations/states/${memberData.country}`)
           .then((response) => setStates(response.data))
           // .then((response => { console.log(response.data) }))
@@ -49,9 +49,9 @@
 
 
     useEffect(() => {
+      const API_URL = process.env.REACT_APP_API_URL;
       if (memberData.state) {
         // Correct URL with state ID as a parameter
-        console.log("Member Data  ", memberData.state)
         axios
           .get(`${API_URL}/api/locations/cities/${memberData.state}`)
           .then((response) => setCities(response.data))
@@ -72,6 +72,7 @@
     }
 
     function submitHandler(event) {
+      const API_URL = process.env.REACT_APP_API_URL;
       event.preventDefault();
 
       const apiEndpoint = `${API_URL}/api/member/member-register`;

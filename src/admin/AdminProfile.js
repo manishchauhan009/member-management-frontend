@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import API_URL from "../Url";
 
 const AdminProfile = () => {
   const [formData, setFormData] = useState({
@@ -23,6 +22,7 @@ const AdminProfile = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
+      const API_URL = process.env.REACT_APP_API_URL;
       try {
         const token = localStorage.getItem("token"); 
         const response = await axios.get(`${API_URL}/api/user/admin-details`, {
@@ -69,6 +69,7 @@ const AdminProfile = () => {
   };
 
   const handleSubmit = async (e) => {
+    const API_URL = process.env.REACT_APP_API_URL;
     e.preventDefault();
     setLoading(true);
     try {

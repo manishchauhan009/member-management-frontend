@@ -57,6 +57,7 @@ const AddGallery = () => {
     };
 
     const handleSubmit = async (event) => {
+        const API_URL = process.env.REACT_APP_API_URL;
         event.preventDefault();
         if (!image) {
             toast.error("Please upload an image first.");

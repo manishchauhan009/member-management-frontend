@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import API_URL from "../Url";
 import { jwtDecode } from "jwt-decode";
 
 const PasswordChange = () => {
@@ -24,6 +23,7 @@ const PasswordChange = () => {
     }, []);
 
     const handleSubmit = async (event) => {
+        const API_URL = process.env.REACT_APP_API_URL;
         event.preventDefault();
 
         // Basic validation

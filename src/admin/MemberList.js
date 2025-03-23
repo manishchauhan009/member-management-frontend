@@ -28,7 +28,9 @@ export const MemberList = () => {
   });
 
   useEffect(() => {
+    
     const fetchMembers = async () => {
+      const API_URL = process.env.REACT_APP_API_URL;
       try {
         const response = await axios.get(`${API_URL}/api/member/get-member`);
         setMembers(response.data.data);
@@ -54,6 +56,7 @@ export const MemberList = () => {
   };
 
   const handleUpdate = async (e) => {
+    const API_URL = process.env.REACT_APP_API_URL;
     e.preventDefault();
     try {
       const payload = {

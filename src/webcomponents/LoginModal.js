@@ -12,8 +12,6 @@ function LoginModal(props) {
   });
   const [isRegister, setIsRegister] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isForgotModalOpen, setIsForgotModalOpen] = useState(false);
-  const [email, setEmail] = useState("");
 
   const hideModalAndReset = () => {
     hideModal(); // Close the modal
@@ -33,7 +31,7 @@ function LoginModal(props) {
 
 
   const loginHandler = () => {
-    console.log(credentials);
+    const API_URL = process.env.REACT_APP_API_URL;
     const { username, password } = credentials;
 
     if (!username || !password) {
@@ -43,7 +41,7 @@ function LoginModal(props) {
 
     setIsLoading(true);
     axios
-      .post("http://localhost:5000/api/user/login", credentials)
+      .post(`${API_URL}/api/user/login`, credentials)
       .then((response) => {
         setIsLoading(false);
         if (response.data.success) {

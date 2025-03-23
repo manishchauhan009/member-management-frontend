@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import API_URL from "../Url";
 
 const AddEvent = () => {
     const [title, setTitle] = useState("");
@@ -61,6 +60,7 @@ const AddEvent = () => {
     };
 
     const handleSubmit = async (event) => {
+        const API_URL = process.env.REACT_APP_API_URL;
         event.preventDefault();
         if (!imageUrls.length) {
             toast.error("Please upload at least one image.");

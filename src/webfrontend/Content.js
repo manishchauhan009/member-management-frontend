@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import API_URL from '../Url';
 
 function Content() {
   const [adminContent, setAdminContent] = useState([]);
 
   useEffect(() => {
     const fetchAdminContent = async () => {
+      const API_URL = process.env.REACT_APP_API_URL;
       try {
         const response = await axios.get(`${API_URL}/api/content/get-content`);
         setAdminContent(response.data.content);

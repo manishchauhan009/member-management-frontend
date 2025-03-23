@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import API_URL from "../Url";
 
 const Gallery = () => {
   const [adminGallery, setAdminGallery] = useState([]);
 
   useEffect(() => {
     const fetchAdminGallery = async () => {
+      const API_URL = process.env.REACT_APP_API_URL;
       try {
         const response = await axios.get(`${API_URL}/api/image/get-image`);
         setAdminGallery(response.data.images);

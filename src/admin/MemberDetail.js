@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import API_URL from "../Url";
 
 const MemberDetail = () => {
   const [memberList, setMemberList] = useState([]);
@@ -9,6 +8,7 @@ const MemberDetail = () => {
 
   // Fetch members from the backend
   useEffect(() => {
+    const API_URL = process.env.REACT_APP_API_URL;
     const fetchMembers = async () => {
       try {
         const response = await axios.get(

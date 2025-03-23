@@ -3,7 +3,6 @@ import axios from "axios";
 import { debounce } from "lodash";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import API_URL from "../Url";
 
 function RegisterForm({ hideModal }) {
   const initialFormState = {
@@ -86,12 +85,14 @@ function RegisterForm({ hideModal }) {
   };
 
   const handleCheckUsername = useCallback(
+    
     debounce(async () => {
       if (!formData.username) {
         setUsernameStatus("Please enter a username to check.");
         return;
       }
       setCheckingUsername(true);
+      const API_URL = process.env.REACT_APP_API_URL;
       try {
         const response = await axios.post(`${API_URL}/api/user/check-username`, {
           username: formData.username,
@@ -154,6 +155,7 @@ function RegisterForm({ hideModal }) {
   };
 
   const handleSubmit = async (e) => {
+    const API_URL = process.env.API_URL;
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       toast.error("Passwords do not match!");

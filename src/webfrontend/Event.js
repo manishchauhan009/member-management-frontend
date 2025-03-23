@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import API_URL from "../Url";
 
 const Event = () => {
   const [events, setEvents] = useState([]);
@@ -10,6 +9,7 @@ const Event = () => {
 
   useEffect(() => {
     const fetchEvents = async () => {
+      const API_URL = process.env.REACT_APP_API_URL;
       try {
         const response = await axios.get(`${API_URL}/api/event/get-event`);
         const eventData = response.data.events || [];

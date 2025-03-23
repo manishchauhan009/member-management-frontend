@@ -3,7 +3,6 @@ import axios from "axios";
 import { format } from "date-fns";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import API_URL from "../Url";
 
 export const RenewList = () => {
   const [memberList, setMemberList] = useState([]);
@@ -13,6 +12,7 @@ export const RenewList = () => {
 
   useEffect(() => {
     const fetchMemberList = async () => {
+      const API_URL = process.env.REACT_APP_API_URL;
       try {
         const response = await axios.get(`${API_URL}/api/member/get-member`);
         setMemberList(response.data.data);
@@ -40,6 +40,7 @@ export const RenewList = () => {
   };
 
   const handleRenewSubmit = async () => {
+    const API_URL = process.env.REACT_APP_API_URL;
     if (!newExpiryDate) {
       toast.error("Please select a new expiry date.");
       return;

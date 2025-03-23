@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import API_URL from "../Url";
 
 const AddContent = () => {
+  
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [tags, setTags] = useState("");
@@ -10,6 +10,7 @@ const AddContent = () => {
   const [preview, setPreview] = useState(null);
 
   const handleSubmit = async (event) => {
+    const API_URL = process.env.REACT_APP_API_URL;
     event.preventDefault();
     const newContent = {
       title,

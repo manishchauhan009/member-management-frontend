@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import API_URL from "../Url";
 
 export const Dashboard = () => {
   const [analyticsData, setAnalyticsData] = useState({
@@ -11,6 +10,7 @@ export const Dashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const API_URL=process.env.REACT_APP_API_URL
       try {
         const response = await fetch(`${API_URL}/api/user/dashboard`);
         console.log(response)
