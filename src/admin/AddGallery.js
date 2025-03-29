@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import API_URL from "../Url";
 
 const AddGallery = () => {
     const [title, setTitle] = useState("");
